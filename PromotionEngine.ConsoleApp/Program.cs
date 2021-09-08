@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace PromotionEngine.Console
+namespace PromotionEngine.ConsoleApp
 {
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            Console.ReadKey();
         }
     }
 }

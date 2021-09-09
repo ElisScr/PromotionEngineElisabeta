@@ -19,7 +19,23 @@ namespace PromotionEngine.Test
             Assert.AreEqual(100, result);
         }
 
+        [TestMethod]
+        public void CalculatorScenario2()
+        {
+            var skus = new List<char> { 'A', 'A', 'A', 'A', 'A', 'B', 'B', 'B', 'B', 'B', 'C' };
+            int result = calc.GetTotalPrice(skus);
 
+            Assert.AreEqual(370, result);
+        }
+
+        [TestMethod]
+        public void CalculatorScenario3()
+        {
+            var skus = new List<char> {'A', 'A', 'A', 'B', 'B', 'B', 'B', 'B', 'C', 'D' };
+            int result = calc.GetTotalPrice(skus);
+
+            Assert.AreEqual(280, result);
+        }
 
     }
 }

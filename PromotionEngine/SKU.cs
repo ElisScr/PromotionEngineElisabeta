@@ -4,9 +4,9 @@ using System.Text;
 
 namespace PromotionEngine
 {
-    static class SKU
+   public static class SKU
     {
-        static Dictionary<char, int> Prices = new Dictionary<char, int>
+      public  static Dictionary<char, int> Prices = new Dictionary<char, int>
         {
             ['A'] = 50,
             ['B'] = 30,

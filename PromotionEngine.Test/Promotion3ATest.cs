@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace PromotionEngine.Test
 {
     [TestClass]
-    public class PromotionTest
+    public class Promotion3ATest
     {
         [TestMethod]
         public void Promotion1Test1()

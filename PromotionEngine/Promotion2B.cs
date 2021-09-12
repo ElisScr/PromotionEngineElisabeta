@@ -1,30 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PromotionEngine
 {
     public class Promotion2B : IPromotion
     {
+        private Utility utility = new Utility();
+        private const int promotionValue = 45;
+        private const int elementMulti = 2;
         public PromotionResult Apply(IEnumerable<char> skus)
         {
-            var count = skus.GroupBy(item => item)
-                     .Select(item => new
-                     {
-                         Name = item.Key,
-                         Count = item.Count()
-                     })
-                     .ToList();
-
-            int numberOfPromotions2B = count.Find(a => a.Name == 'B').Count / 2;
-            List<char> temp = Enumerable.Repeat('B', numberOfPromotions2B * 2).ToList();
-            PromotionResult result = new PromotionResult
+            var listOfItemCount = utility.GetDynamicList(skus);
+            int numberOfPromotions2B = utility.GetCountOfItem(listOfItemCount, 'B') / elementMulti;
+            List<char> temp = Enumerable.Repeat('B', numberOfPromotions2B * elementMulti).ToList();
+            
+            return new PromotionResult
             {
-                PromotionPrice = numberOfPromotions2B * 45,
+                PromotionPrice = numberOfPromotions2B * promotionValue,
                 RemainingSkus = skus.Where(t => !temp.Remove(t)).ToList()
             };
-            return result;
         }
     }
 }

@@ -5,26 +5,19 @@ namespace PromotionEngine
 {
     public class Promotion3A : IPromotion
     {
+        private Utility utility = new Utility();
+        private const int promotionValue = 130;
+        private const int elementMulti = 3;
         public PromotionResult Apply(IEnumerable<char> skus)
         {
-            var count = skus.GroupBy(item => item)
-                      .Select(item => new
-                      {
-                          Name = item.Key,
-                          Count = item.Count()
-                      })                      
-                      .ToList();
-
-            int numberOfPromotions3A = count.Find(a => a.Name == 'A').Count / 3;
-
-            PromotionResult result = new PromotionResult
-
+            var listOfItemCount = utility.GetDynamicList(skus);
+            int numberOfPromotions3A = utility.GetCountOfItem(listOfItemCount, 'A') / elementMulti;
+            
+            return new PromotionResult
             {
-                PromotionPrice = numberOfPromotions3A * 130,
-                RemainingSkus = skus.OrderBy(x=>x).Skip(numberOfPromotions3A * 3).ToList()
+                PromotionPrice = numberOfPromotions3A * promotionValue,
+                RemainingSkus = skus.OrderBy(x=>x).Skip(numberOfPromotions3A * elementMulti).ToList()
             };
-
-            return result;
         }
     }
 }

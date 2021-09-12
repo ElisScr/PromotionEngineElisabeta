@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PromotionEngine
 {
@@ -11,8 +10,7 @@ namespace PromotionEngine
             int total = 0;
 
             foreach (var p in promotions)
-            {
-               
+            {              
                 PromotionResult promotionResult = p.Apply(skus);
                 total += promotionResult.PromotionPrice;
                 skus = promotionResult.RemainingSkus;
@@ -20,8 +18,7 @@ namespace PromotionEngine
             foreach (var item in skus)
             {
                 total += SKU.Prices.GetValueOrDefault(item);
-            }
-            
+            }            
             return total;
         }
     }

@@ -4,7 +4,9 @@ namespace PromotionEngine
 {
     public class Calculator
     {
-        IList<IPromotion> promotions = new List<IPromotion> { new Promotion3A(), new Promotion2B(), new PromotionCD() };
+        IList<IPromotion> promotions = new List<IPromotion> { new PromotionNSKU('A', 3, 130), 
+                                                              new PromotionNSKU('B', 2, 45), 
+                                                              new PromotionSKU1SKU2('C', 'D', 30) };
         public int GetTotalPrice(List<char> skus)
         {
             int total = 0;

@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace PromotionEngine
 {
-   class Utility
+  static class Utility
     {
-        public List<dynamic> GetDynamicList(IEnumerable<char> skus)
+        public static List<dynamic> GetDynamicList(IEnumerable<char> skus)
         {
             return skus.GroupBy(item => item)
                    .Select(item => new
@@ -15,7 +15,7 @@ namespace PromotionEngine
                    }).ToList<dynamic>();
         }
 
-        public int GetCountOfItem(List<dynamic> itemCount, char item)
+        public static int GetCountOfItem(List<dynamic> itemCount, char item)
         {
             return itemCount.FirstOrDefault(c => c.Name == item)?.Count ?? 0;
         }

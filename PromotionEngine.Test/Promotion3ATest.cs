@@ -11,7 +11,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> { 'A', 'A', 'A' };
 
-            IPromotion prom = new Promotion3A();
+            IPromotion prom = new PromotionNSKU('A', 3, 130);
             PromotionResult result = prom.Apply( skus );
 
             CollectionAssert.AreEquivalent(new List<char>(), result.RemainingSkus);
@@ -23,7 +23,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> { 'A', 'A', 'A', 'B', 'C', 'C' };
 
-            IPromotion prom = new Promotion3A();
+            IPromotion prom = new PromotionNSKU('A', 3, 130);
             PromotionResult result = prom.Apply(skus);
 
             CollectionAssert.AreEquivalent(new List<char> { 'B', 'C', 'C' }, result.RemainingSkus);
@@ -35,7 +35,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> { 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'C' };
 
-            IPromotion prom = new Promotion3A();
+            IPromotion prom = new PromotionNSKU('A', 3, 130);
             PromotionResult result = prom.Apply(skus);
 
             CollectionAssert.AreEquivalent(new List<char> { 'A', 'A', 'B', 'C', 'C' }, result.RemainingSkus);
@@ -47,7 +47,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> {  'A', 'B', 'C', 'C' };
 
-            IPromotion prom = new Promotion3A();
+            IPromotion prom = new PromotionNSKU('A', 3, 130);
             PromotionResult result = prom.Apply(skus);
 
             CollectionAssert.AreEquivalent(new List<char> {  'A', 'B', 'C', 'C' }, result.RemainingSkus);
@@ -59,7 +59,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> { 'B', 'A', 'C', 'A', 'A' };
 
-            IPromotion prom = new Promotion3A();
+            IPromotion prom = new PromotionNSKU('A', 3, 130);
             PromotionResult result = prom.Apply(skus);
 
             CollectionAssert.AreEquivalent(new List<char> { 'C', 'B' }, result.RemainingSkus);

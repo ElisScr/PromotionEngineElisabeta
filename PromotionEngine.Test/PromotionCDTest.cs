@@ -12,7 +12,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> { 'C', 'D' };
 
-            IPromotion prom = new PromotionCD();
+            IPromotion prom = new PromotionSKU1SKU2('C', 'D', 30);
             PromotionResult result = prom.Apply(skus);
 
             CollectionAssert.AreEquivalent(new List<char>(), result.RemainingSkus);
@@ -23,7 +23,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> { 'C', 'D','C','D' };
 
-            IPromotion prom = new PromotionCD();
+            IPromotion prom = new PromotionSKU1SKU2('C', 'D', 30);
             PromotionResult result = prom.Apply(skus);
 
             CollectionAssert.AreEquivalent(new List<char>(), result.RemainingSkus);
@@ -34,7 +34,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> { 'C', 'C', 'D', 'C', 'D' };
 
-            IPromotion prom = new PromotionCD();
+            IPromotion prom = new PromotionSKU1SKU2('C', 'D', 30);
             PromotionResult result = prom.Apply(skus);
 
             CollectionAssert.AreEquivalent(new List<char> { 'C'}, result.RemainingSkus);
@@ -45,7 +45,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> { 'C', 'D','A', 'B' };
 
-            IPromotion prom = new PromotionCD();
+            IPromotion prom = new PromotionSKU1SKU2('C', 'D', 30);
             PromotionResult result = prom.Apply(skus);
 
             CollectionAssert.AreEquivalent(new List<char> { 'A', 'B'}, result.RemainingSkus);
@@ -56,7 +56,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> { 'A', 'B' };
 
-            IPromotion prom = new PromotionCD();
+            IPromotion prom = new PromotionSKU1SKU2('C', 'D', 30);
             PromotionResult result = prom.Apply(skus);
 
             CollectionAssert.AreEquivalent(new List<char> { 'A', 'B' }, result.RemainingSkus);
@@ -67,7 +67,7 @@ namespace PromotionEngine.Test
         {
             IEnumerable<char> skus = new List<char> { 'A', 'B', 'C' };
 
-            IPromotion prom = new PromotionCD();
+            IPromotion prom = new PromotionSKU1SKU2('C', 'D', 30);
             PromotionResult result = prom.Apply(skus);
 
             CollectionAssert.AreEquivalent(new List<char> { 'A', 'B' , 'C'}, result.RemainingSkus);

@@ -2,7 +2,10 @@
 
 namespace PromotionEngine
 {
-   public static class SKU
+    /// <summary>
+    /// Unit price for SKU IDs 
+    /// </summary>
+    public static class SKU
     {
       public  static Dictionary<char, int> Prices = new Dictionary<char, int>
         {

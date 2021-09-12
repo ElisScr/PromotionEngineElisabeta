@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace PromotionEngine
 {
+    /// <summary>
+    /// Promotion for buying SKU 1 & SKU 2 for a fixed price 
+    /// </summary>
     public class PromotionSKU1SKU2 : IPromotion
     {
         private char SKU1 { get; set; }
